@@ -1,0 +1,106 @@
+<!DOCTYPE html>
+<html lang="ko">
+
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Project 01</title>
+    <link rel="stylesheet" href="style.css" />
+</head>
+
+<body>
+    <aside id="sidebar" class="sidebar" aria-hidden="true">
+        <div class="sidebar-header">
+            <h2>지역 옵션</h2>
+            <button id="close-btn" class="icon-btn" aria-label="닫기">✕</button>
+        </div>
+
+        <div class="sidebar-section">
+            <h3>여행 조건</h3>
+
+            <div class="filter-group">
+                <label for="region">지역</label>
+                <select id="region">
+                    <option>지역 선택</option>
+                    <option>서울</option>
+                    <option>부산</option>
+                    <option>대전</option>
+                </select>
+            </div>
+
+            <div class="filter-group">
+                <label for="move">이동 수단</label>
+                <select id="move">
+                    <option>이동 수단</option>
+                    <option>도보</option>
+                    <option>대중교통</option>
+                    <option>차량</option>
+                </select>
+            </div>
+
+            <div class="filter-group">
+                <label for="time">시간대</label>
+                <select id="time">
+                    <option>시간대</option>
+                    <option>오전</option>
+                    <option>오후</option>
+                    <option>종일</option>
+                </select>
+            </div>
+
+            <button class="apply-btn" type="button">추천받기</button>
+        </div>
+
+    </aside>
+
+    <div id="overlay" class="overlay" hidden></div>
+
+    <header class="header">
+        <div class="brand">
+            <button id="menu-btn" class="icon-btn" aria-label="메뉴 열기">☰</button>
+            <h1 class="logo">WEB NAME</h1>
+        </div>
+
+        <nav class="nav">
+            <a href="#">홈</a>
+            <a href="#">추천 코스</a>
+            <a href="#">내 일정</a>
+        </nav>
+    </header>
+
+    <main class="container">
+        <section class="hero">
+            <h2>지도 API 연결할 부분 </h2>
+            <p>왼쪽 상단 메뉴(☰)를 눌러 조건을 설정할 수 있어요.</p>
+        </section>
+    </main>
+
+    <footer class="footer"> </footer>
+
+    <script>
+        const menuBtn = document.getElementById("menu-btn");
+        const closeBtn = document.getElementById("close-btn");
+        const sidebar = document.getElementById("sidebar");
+        const overlay = document.getElementById("overlay");
+
+        function openSidebar() {
+            sidebar.classList.add("open");
+            sidebar.setAttribute("aria-hidden", "false");
+            overlay.hidden = false;
+            document.body.classList.add("no-scroll");
+        }
+
+        function closeSidebar() {
+            sidebar.classList.remove("open");
+            sidebar.setAttribute("aria-hidden", "true");
+            overlay.hidden = true;
+            document.body.classList.remove("no-scroll");
+        }
+
+        menuBtn.addEventListener("click", openSidebar);
+        closeBtn.addEventListener("click", closeSidebar);
+        overlay.addEventListener("click", closeSidebar);
+    </script>
+</body>
+
+</html>
