@@ -17,7 +17,7 @@ app.get('/', (req, res) => {
     res.sendFile(path.join(__dirname, '../../frontend/basic.html'));
 });
 
-// kako map api key 전달용 endpoint
+// frontend needs the API key for Kakao Maps
 app.get('/api/config', (req, res) => {
     res.json({
         kakaoApiKey: process.env.KAKAO_MAP_API_KEY
@@ -26,5 +26,5 @@ app.get('/api/config', (req, res) => {
 
 // Run the server
 app.listen(PORT, () => {
-    console.log('Server is running on port ${PORT}');
+    console.log('Server is running on port: ' + PORT);
 });
