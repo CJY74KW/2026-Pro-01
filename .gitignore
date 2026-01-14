@@ -1,3 +1,3 @@
 # backend
-backend/.env    # 백엔드 API key 보호
-backend/node_modules/   # 백엔드 라이브러리 제외
+backend\.env    # 백엔드 API key 보호
+backend\node_modules\   # 백엔드 라이브러리 제외
