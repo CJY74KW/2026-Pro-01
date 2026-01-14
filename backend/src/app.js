@@ -1,14 +1,23 @@
+// backend/app.js
 require('dotenv').config();
 const express = require('express');
-const app = express();
+const cors = require('cors');
+const path = require('path');
 
+const app = express();
 const PORT = process.env.PORT || 3000;
 
+app.use(cors());
+app.use(express.json());
+
+// Serve static files from the frontend directory
+app.use(express.static(path.join(__dirname, '../frontend')));
+
 app.get('/', (req, res) => {
-    res.send('Hello World!');
+    res.sendFile(path.join(__dirname, '../frontend/basic.html'));
 });
 
+// Run the server
 app.listen(PORT, () => {
     console.log(`Server is running on port ${PORT}`);
 });
-console.log("kakao api key:", process.env.KAKAO_API_KEY);
