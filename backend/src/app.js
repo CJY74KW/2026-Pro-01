@@ -11,13 +11,20 @@ app.use(cors());
 app.use(express.json());
 
 // Serve static files from the frontend directory
-app.use(express.static(path.join(__dirname, '../frontend')));
+app.use(express.static(path.join(__dirname, '../../frontend')));
 
 app.get('/', (req, res) => {
-    res.sendFile(path.join(__dirname, '../frontend/basic.html'));
+    res.sendFile(path.join(__dirname, '../../frontend/basic.html'));
+});
+
+// kako map api key 전달용 endpoint
+app.get('/api/config', (req, res) => {
+    res.json({
+        kakaoApiKey: process.env.KAKAO_MAP_API_KEY
+    });
 });
 
 // Run the server
 app.listen(PORT, () => {
-    console.log(`Server is running on port ${PORT}`);
+    console.log('Server is running on port ${PORT}');
 });
